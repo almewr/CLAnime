@@ -7,7 +7,7 @@ import moviepy.editor
 import playsound
 
 
-vid = "/home/almor/Documents/Python Course with Notes/CLanime/testvod.mp4"
+vid = "testvod.mp4" # if program throws error, enter the video path in the string
 video = cv2.VideoCapture(vid)
 fps = video.get(cv2.CAP_PROP_FPS)
 framecnt = video.get(cv2.CAP_PROP_FRAME_COUNT)
@@ -15,14 +15,14 @@ runtime =  framecnt
 def getframe(n):
     video.set(cv2.CAP_PROP_POS_FRAMES, n)
     ret, frame = video.read()
-    name = f"/home/almor/Documents/Python Course with Notes/CLanime/.vidcache/.{n}.png"
+    name = f".vidcache/.{n}.png" # if program throws error, enter the video path in the string
     cv2.imwrite(name, frame)
 def goreshti():
     playsound.playsound('audio.mp3')
 slept = 1/fps
 
 
-input_file = moviepy.editor.VideoFileClip('/home/almor/Documents/Python Course with Notes/CLanime/testvod.mp4')
+input_file = moviepy.editor.VideoFileClip('testvod.mp4') # if program throws error, enter the video path in the string
 audio = input_file.audio
 audio.write_audiofile("audio.mp3")
 
@@ -40,9 +40,9 @@ while (c < framecnt):
 
     getframe(c)
 
-    imgnm = f"/home/almor/Documents/Python Course with Notes/CLanime/.vidcache/.{c}.png"
+    imgnm = f".vidcache/.{c}.png" # if program throws error, enter the video path in the string
     if c>1:
-        imgnamaewa = f"/home/almor/Documents/Python Course with Notes/CLanime/.vidcache/.{c-1}.png"
+        imgnamaewa = f".vidcache/.{c-1}.png" # if program throws error, enter the video path in the string
         os.remove(imgnamaewa)
 
     image = cv2.imread(imgnm)
